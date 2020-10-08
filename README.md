@@ -1,3 +1,3 @@
-# Typescript-React--Boilerplate
+# TS -Prac
 
-A bolier plate to get started on typescript-react projects quicker
+Practice with typescript
