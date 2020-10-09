@@ -120,8 +120,71 @@ greet = () => {
 }
 // greet = 'hello'
 
-const add = (a: number, b: number) => {
+const add = (a: number, b: number, c: number | string = 10): void => {
     console.log(a + b)
+    console.log(c)
 }
 
-add(5, 36)
+add(5, 36, 56)
+// add(5, '36')
+
+const minus = (a: number, b: number): number => {
+    return a - b
+}
+
+let result = minus(45, 5)
+// result = 'string'
+
+
+// ALIASES
+const logDetails = (uid: string | number, item: string) => {
+    console.log(`${item} has a uid of ${uid}`)
+}
+
+const greetAgain = (user: {name: string, uid: string | number}) => {
+    console.log(`${user.name} says hello`)
+}
+
+const greetAgainAgain = (user: {name: string, uid: string | number}) => {
+    console.log(`${user.name} says hello`)
+}
+
+// INSTEAD OF THE ABOVE WE CAN SHORTEN WITH ALIASES
+type StringOrNum = string | number
+type objectWithName = { name: string, uid: StringOrNum}
+
+const logDetails1 = (uid: StringOrNum, item: string) => {
+    console.log(`${item} has a uid of ${uid}`)
+}
+
+const greetAgain1 = (user: {name: string, uid: StringOrNum}) => {
+    console.log(`${user.name} says hello`)
+}
+
+const greetAgainAgain2 = (user: objectWithName) => {
+    console.log(`${user.name} says hello`)
+}
+
+
+// FUNCTIONS
+let grting: (a: string, b: string) => void
+grting = (name: string, greeting: string) => {
+    console.log(`${name} says ${greeting}`)
+}
+
+let calc: (a: number, b: number, c: string) => number
+calc = (numOne: number, numTwo: number, action: string) => {
+    if (action === 'add') {
+        return numOne + numTwo
+    } else {
+        return numOne - numTwo
+    } 
+}
+
+let logginDetails: (obj: {name: string, age: number}) => void
+
+type person = {name: string, age: number}
+
+logginDetails = (ninja3: person) => {
+    console.log(`${ninja3.name} is ${ninja3.age}`)
+}
