@@ -111,3 +111,17 @@ number = true
 number = 'why?'
 number = { name: 'snakes'}
 console.log(number)
+
+// FUNCTIONS
+let greet: Function
+
+greet = () => {
+    console.log('hello world')
+}
+// greet = 'hello'
+
+const add = (a: number, b: number) => {
+    console.log(a + b)
+}
+
+add(5, 36)

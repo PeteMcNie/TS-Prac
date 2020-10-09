@@ -83,3 +83,13 @@ number = true;
 number = 'why?';
 number = { name: 'snakes' };
 console.log(number);
+// FUNCTIONS
+var greet;
+greet = function () {
+    console.log('hello world');
+};
+// greet = 'hello'
+var add = function (a, b) {
+    console.log(a + b);
+};
+add(5, 36);
