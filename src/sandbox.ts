@@ -212,7 +212,7 @@ class Invoice {
 const invOne = new Invoice('pete', 'work on webpage', 300)
 const invTwo = new Invoice('sam', 'work on house', 500)
 
-console.log(invOne, invTwo)
+// console.log(invOne, invTwo)
 
 let invoices: Invoice[] = []
 // invoices.push('hello')
@@ -285,3 +285,24 @@ form.addEventListener('submit', (e: Event) => {
 })
 
 
+// INTERFACES
+interface IsPerson {
+    name: string
+    age: number
+    speak(a: string): void
+    spend(a: number): number
+}
+
+const me: IsPerson = {
+    name: 'Pete',
+    age: 33,
+    speak(text: string): void {
+        console.log(text)
+    },
+    spend(amount: number): number {
+        console.log('I spent ', amount)
+        return amount
+    }
+}
+
+//console.log(me)

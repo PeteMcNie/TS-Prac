@@ -1,4 +1,6 @@
-export class Invoice {
+import { HasFormatter } from '../interfaces/hasFormatter'
+
+export class Invoice implements HasFormatter {
     readonly client: string //You cannot change what this value is BUT YOU CAN ACCESS IT
     private details: string  //Can only access INSIDE class instance now as PRIVATE is declared
     public amount: number   //public is default

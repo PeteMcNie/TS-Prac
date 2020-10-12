@@ -1,52 +1,38 @@
 import { Invoice } from './classes/invoice.js'
+import { Payment } from './classes/payment.js'
+import { HasFormatter } from './interfaces/hasFormatter.js'
 
 const invOne = new Invoice('pete', 'work on webpage', 300)
 const invTwo = new Invoice('sam', 'work on house', 500)
 
-// console.log(invOne, invTwo)
 
 let invoices: Invoice[] = []
-// invoices.push('hello')
-// invoices.push({name: 'karl'})
 invoices.push(invOne)
 invoices.push(invTwo)
-// console.log(invoices)
-
-// invOne.client = 'john' // Readonly, cannot change
 
 invoices.forEach(inv => {  //As private cannot access here
     console.log(inv.client, /* inv.details, */ inv.amount, inv.format())
 })
 
-
-// WE MIGHT NOT WANT ANOTHER DEVELOPER TO BE ABLE TO CHANGE THE VALUES IN OUR INVOICE LIKE BELOW:
-// invOne.client = 'Nigel'
-// invTwo.amount = 355
 console.log(invoices)
 
 
+let docOne: HasFormatter
+let docTwo: HasFormatter
 
+docOne = new Invoice('Tiger', 'building webpage', 500)
+docTwo = new Payment('Monkey', 'eating bananas', 35)
 
+let docs: HasFormatter[] = []
+docs.push(docOne)
+docs.push(docTwo)
 
-
-
-
-
+console.log(docs)
 
 
 
 // INTERACTING WITH THE DOM
-const anchor  = document.querySelector('a')! // ! means a value WILL be returned and NOT NULL
-
-// if (anchor) {
-//     console.log(anchor.href)
-// }
-
-//console.log(anchor.href)
-
-//const form = document.querySelector('form')!
 const form = document.querySelector('.new-item-form') as HTMLFormElement // Searching for a CLASS which can change
-//console.log(form.children)
 
 //inputs
 const type = document.querySelector('#type') as HTMLSelectElement
@@ -56,12 +42,14 @@ const amount = document.querySelector('#amount') as HTMLInputElement
 
 form.addEventListener('submit', (e: Event) => {
     e.preventDefault()
-    console.log(
-        type.value,
-        toFrom.value,
-        details.value,
-        amount.valueAsNumber
-    )
+
+    let doc: HasFormatter
+    if (type.value === 'invoice') {
+        doc = new Invoice(toFrom.value, details.value, amount.valueAsNumber)
+    } else {
+        doc = new Payment(toFrom.value, details.value, amount.valueAsNumber)
+    }
+    console.log(doc)
 })
 
 
