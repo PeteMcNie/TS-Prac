@@ -306,3 +306,15 @@ const me: IsPerson = {
 }
 
 //console.log(me)
+
+// GENERICS
+const addNumber = (obj: object) => {
+    let num = Math.floor(Math.random() * 1000)
+    return {...obj, num}
+}
+
+let player = addNumber({name: 'Sergio', age: 36})
+
+console.log(player)
+
+
